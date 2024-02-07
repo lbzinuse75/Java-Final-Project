@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "parcel": "^2.11.0"
+  },
+  "name": "java-final-project",
+  "description": "WWD330 final project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Becky Lutz"
+}
