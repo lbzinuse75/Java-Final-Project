@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap : 16px;
+}
+
+.footer {
+    text-align: center;
+    padding: 16px;
+    margin: 0 auto;
+}
+
+.counter-footer {
+    display: flex;
+    gap: 8px;
+}
+
+.counter-button {
+    width: 64px;
+    height: 32px;
+    font-size: 24px;
+}
+
+.counter-label {
+    display: block;
+    font-size: 32px;
+    background: #f7f7f7;
+    width: 136px;
+    padding: 4px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    text-align: center;
+}

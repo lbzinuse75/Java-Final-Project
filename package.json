@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "parcel": "^2.11.0"
+    "parcel": "^2.11.0",
+    "prettier": "^3.2.5"
   },
   "name": "java-final-project",
   "description": "WWD330 final project",
