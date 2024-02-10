@@ -12,15 +12,15 @@ function Header() {
     // nav items
     const page1 = createElement('a', { 
         href: '/#/page1',
-        textContent: 'Page 1'
+        textContent: 'Characters'
     });    
     const page2 = createElement('a', {
          href: '/#/page2', 
-         textContent: 'Page 2'
+         textContent: 'Story'
     });
     const page3 = createElement('a', {
          href: '/#/page3', 
-         textContent: 'Page 3'
+         textContent: 'Quiz'
     });
 
 

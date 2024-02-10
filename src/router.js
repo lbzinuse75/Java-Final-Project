@@ -15,6 +15,7 @@ function hashToRoute(hash) {
     switch(hash) {
         case'#/page1':
             updateView(Page1());
+            console.log(Page1());
             break;
 
         case'#/page2':
