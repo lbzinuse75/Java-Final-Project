@@ -1,56 +1,3 @@
-import Page1 from './page1.js';
-import Page2 from './page2.js';
-import Page3 from './page3.js';
-import { createElement } from './utils';
-
-
-export function initRouter(mainView) {
-    async function updateView(newView) {
-        mainView.innerHTML = '';
-        mainView.appendChild(newView);
-    }
-
-
-    async function hashToRoute(hash) {
-        switch (hash) {
-            case '#/page1':
-                await updateView(Page1());
-                console.log(Page1());
-                console.log(mainView);
-                // console.log( document.getElementById('searchInput'));
-                addEvent();
-                
-                break;
-
-            case '#/page2':
-                updateView(Page2());
-                break;
-
-            case '#/page3':
-                updateView(Page3());
-                break;
-
-            default:
-                updateView(createElement('h3', { textContent: '404 Page Not Found' }));
-                break;
-        }
-    }
-
-    const defaultHash = window.location.hash;
-    hashToRoute(defaultHash);
-
-    window.addEventListener('hashchange', (evt) => {
-        const newUrl = new URL(evt.newURL);
-        const hash = newUrl.hash;
-
-        hashToRoute(hash);
-        console.log(document.getElementById('searchInput'));
-    });
-
-}
-
-
-
 function createCharacterElement(character) {
     console.log(character);
     const characterImage = createElement('img', { src: character.imageUrl, alt: character.name, className: 'character-image' });
@@ -104,8 +51,7 @@ function displayCharacterInfo(character) {
     else{
         const characterElement = createCharacterElement(character);
         main.appendChild(characterElement);
-    }
-    
+    } 
 }
 
 function fetchCharacterData(characterName) {
@@ -121,10 +67,7 @@ function fetchCharacterData(characterName) {
         .catch(error => console.error('Error fetching character data:', error));
 }
 
-
-
-
-function addEvent() {
+export default function addEvent() {
 
     // Assuming you have a search bar with an ID 'searchInput'
     const searchInputElement = document.getElementById('submitBtn');
@@ -140,5 +83,3 @@ function addEvent() {
         }
     });
 }
-// https://api.disneyapi.dev/characters?name=Mickey%20Mouse
-// https://api.disneyapi.dev/character?name=Mickey%20Mouse
