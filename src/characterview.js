@@ -1,5 +1,12 @@
+import { createElement } from './utils';
+import { Header } from './app.js';
+
+// add a header with the nav to beable to go back to the main page
+// const headerContainer = document.createElement('div');
+// document.body.appendChild(headerContainer);
+// headerContainer.appendChild(Header());
+
 function createCharacterElement(character) {
-    console.log(character);
     const characterImage = createElement('img', { src: character.imageUrl, alt: character.name, className: 'character-image' });
     const characterInfo = createElement('div', { className: 'character-info' });
 
@@ -61,25 +68,24 @@ function fetchCharacterData(characterName) {
         .then(response => response.json())
         .then(data => {
             const character = data.data;
-            console.log(character);
             displayCharacterInfo(character);
         })
         .catch(error => console.error('Error fetching character data:', error));
 }
 
 export default function addEvent() {
-
-    // Assuming you have a search bar with an ID 'searchInput'
-    const searchInputElement = document.getElementById('submitBtn');
-    console.log(searchInputElement);
-    // Listen for changes in the search input
-    searchInputElement.addEventListener('click', (event) => {
-        
-        const input = document.getElementById('searchInput').value.trim();
-        console.log(input);
-        // const searchTerm = event.target.value.trim();
-        if (input.length > 0) {
-            fetchCharacterData(input);
-        }
+    return new Promise((resolve) => {
+        // Assuming you have a search bar with an ID 'searchInput'
+        const searchInputElement = document.getElementById('submitBtn');
+        // Listen for changes in the search input
+        searchInputElement.addEventListener('click', (event) => {
+            
+            const input = document.getElementById('searchInput').value.trim();
+            // const searchTerm = event.target.value.trim();
+            if (input.length > 0) {
+                fetchCharacterData(input);
+            }
+        });
+        resolve();
     });
 }

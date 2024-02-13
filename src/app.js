@@ -3,7 +3,7 @@ import { initRouter } from './router';
 
 // import Counter from './counter';
 
-function Header() {
+export function Header() {
     const appTitle = createElement('h1', { 
         textContent: 'Disney Fun!', 
         className: 'heading',
