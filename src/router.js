@@ -6,8 +6,12 @@ import addEvent from './characterview.js'
 
 export function initRouter(mainView) {
     async function updateView(newView) {
-        mainView.innerHTML = '';
-        mainView.appendChild(newView);
+        try {
+            mainView.innerHTML = '';
+            mainView.appendChild(newView);
+        } catch (error) {
+            console.error('Error updating view:', error);
+        }   
     }
 
     async function hashToRoute(hash) {
@@ -18,7 +22,7 @@ export function initRouter(mainView) {
                 break;
 
             case '#/page2':
-                updateView(Page2());
+                await updateView(Page2());
                 break;
 
             case '#/page3':
@@ -30,10 +34,13 @@ export function initRouter(mainView) {
                 break;
         }
     }
-
-    const defaultHash = window.location.hash;
-    hashToRoute(defaultHash);
-
+    function initializeRouter() {
+        const defaultHash = window.location.hash;
+        hashToRoute(defaultHash);
+    }
+    
+    initializeRouter();
+    
     window.addEventListener('hashchange', (evt) => {
         const newUrl = new URL(evt.newURL);
         const hash = newUrl.hash;

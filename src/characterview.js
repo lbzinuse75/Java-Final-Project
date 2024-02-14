@@ -1,5 +1,5 @@
 import { createElement } from './utils';
-import { Header } from './app.js';
+// import { Header } from './app.js';
 
 // add a header with the nav to beable to go back to the main page
 // const headerContainer = document.createElement('div');
@@ -45,7 +45,8 @@ function createCharacterElement(character) {
 }
 
 function displayCharacterInfo(character) {
-    const main = document.getElementById('root');
+    // const main = document.getElementById('root');
+    const main = document.getElementById('main');
     main.innerHTML = ''; // Clear previous content
 
     // Create and append the character element to the main

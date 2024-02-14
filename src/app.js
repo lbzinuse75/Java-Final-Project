@@ -38,11 +38,11 @@ function Footer() {
 }
 
 function App() {
-    const main = createElement('main', {}, []);
+    const main = createElement('main', {id: 'main'}, []);
 
     initRouter(main);
 
-    return createElement('div', {}, [Header(), main, Footer()]);
+    return createElement('div', {className: 'app'}, [Header(), main, Footer()]);
 }
 
 export default App;
