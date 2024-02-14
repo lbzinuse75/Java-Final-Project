@@ -15,15 +15,15 @@ function Page2() {
     // Append form elements to form
     form.append(nounInput1, nounInput2, personInput, submitButton);
 
-    // const div = createElement('div', {type: 'text', name: 'result'});
+    // Initialize formData outside of the gerateSotry function
+    let formData;
 
     // Handle form submission
     submitButton.addEventListener('click', generateStory);
 
     function generateStory() {
         const form = document.getElementById('form');
-        const formData = new FormData(form);
-    }
+        formData = new FormData(form);
 
         const noun1 = formData.get('noun1');
         const noun2 = formData.get('noun2');
@@ -36,15 +36,14 @@ function Page2() {
             Wouldn't you think I'm the ${person}
             The ${person} who has everything?
         `;
-
+        
         // Display the generated story
         const result = document.getElementById('result');
         result.innerHTML = story;
-
+    }
         form.addEventListener('submit', (event) => {
             event.preventDefault();
         });
-    
 
     return createElement('div', {}, [title, form, createElement('div', { id: 'result' })]);
 }
