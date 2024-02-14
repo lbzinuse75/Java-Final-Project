@@ -6,9 +6,15 @@ function Page2() {
     // Create form elements
     const form = createElement('form');
     form.id = 'form';
-    const nounInput1 = createElement('input', { type: 'text', name: 'noun1', id: 'noun1', placeholder: 'Enter a noun' });
-    const nounInput2 = createElement('input', { type: 'text', name: 'noun2', id: 'noun2', placeholder: 'Enter a noun' });
-    const personInput = createElement('input', { type: 'text', name: 'person', id: 'person', placeholder: 'Enter a person' });
+    const nounInput1 = createElement('div', {}, [
+        createElement('input', { type: 'text', name: 'noun1', id: 'noun1', placeholder: 'Enter a noun' })]
+    );
+    const nounInput2 = createElement('div', {}, [
+        createElement('input', { type: 'text', name: 'noun2', id: 'noun2', placeholder: 'Enter a noun' })]
+    );
+    const personInput = createElement('div', {}, [
+        createElement('input', { type: 'text', name: 'person', id: 'person', placeholder: 'Enter a person' })]
+    );
 
     const submitButton = createElement('button', { type: 'submit', name: 'submitButton', id: 'submitButton', textContent: 'Generate Story' });
 
@@ -29,17 +35,20 @@ function Page2() {
         const noun2 = formData.get('noun2');
         const person = formData.get('person');
 
+        const storyTitleAriel = createElement('h3', {textContent: 'Ariels New Song'}, [])
+
         // Create the story using the collected input
         const story = `
-            Look at this ${noun1}, isn't it neat?
-            Wouldn't you think my ${noun2}'s complete?
-            Wouldn't you think I'm the ${person}
-            The ${person} who has everything?
+            Look at this ${noun1}, isn't it neat?<br>
+            Wouldn't you think my ${noun2}'s complete?<br>
+            Wouldn't you think I'm the ${person}<br>
+            The ${person} who has everything?<br>
         `;
         
         // Display the generated story
         const result = document.getElementById('result');
-        result.innerHTML = story;
+        result.appendChild(storyTitleAriel);
+        result.innerHTML += `<div>${story}</div>`;
     }
         form.addEventListener('submit', (event) => {
             event.preventDefault();
