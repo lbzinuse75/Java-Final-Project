@@ -2,6 +2,7 @@ import { createElement } from './utils';
 
 function Page1() {
     const title = createElement('h2', { textContent: 'Welcome to Disney Characters', className: 'Page1Title' });
+    const instruction = createElement('p', {textContent: "Type in any Disney Character's name and click Search"});
 
     const searchLabel = createElement('label', { for: 'searchInput', textContent: 'Search:' });
     const searchInput = createElement('input', { type: 'text', id: 'searchInput', style: 'width: 150px; height: 16px' });
@@ -33,7 +34,7 @@ function Page1() {
         this.style.backgroundColor = '';
     });
     
-    return createElement('div', {}, [title, searchLabel, searchInput, searchBtn, characterTitle]);
+    return createElement('div', {}, [title, instruction, searchLabel, searchInput, searchBtn, characterTitle]);
 }
 
 export default Page1 

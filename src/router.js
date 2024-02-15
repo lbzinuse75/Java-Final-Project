@@ -34,9 +34,9 @@ export function initRouter(mainView) {
                 break;
         }
     }
-    function initializeRouter() {
+    async function initializeRouter() {
         const defaultHash = window.location.hash;
-        hashToRoute(defaultHash);
+        await hashToRoute(defaultHash);
     }
     
     initializeRouter();

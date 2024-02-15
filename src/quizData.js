@@ -1,4 +1,4 @@
-const quizData = [
+const importedQuizData = [
     {
       question: "What is the name of Mickey Mouse's dog?",
       options: ["Pluto", "Goofy", "Donald Duck", "Daisy Duck"],
@@ -15,3 +15,5 @@ const quizData = [
       correctAnswer: "Rafiki"
     },
   ];
+
+  export default importedQuizData;
