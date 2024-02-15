@@ -1,10 +1,4 @@
 import { createElement } from './utils';
-// import { Header } from './app.js';
-
-// add a header with the nav to beable to go back to the main page
-// const headerContainer = document.createElement('div');
-// document.body.appendChild(headerContainer);
-// headerContainer.appendChild(Header());
 
 function createCharacterElement(character) {
     const characterImage = createElement('img', { src: character.imageUrl, alt: character.name, className: 'character-image' });
@@ -45,7 +39,6 @@ function createCharacterElement(character) {
 }
 
 function displayCharacterInfo(character) {
-    // const main = document.getElementById('root');
     const main = document.getElementById('main');
     main.innerHTML = ''; // Clear previous content
 

@@ -1,5 +1,6 @@
 import {createElement} from './utils';
 import { initRouter } from './router';
+import addEvent from './characterview.js'
 
 // import Counter from './counter';
 
@@ -22,7 +23,6 @@ export function Header() {
          href: '/#/page3', 
          textContent: 'Quiz'
     });
-
 
     const nav = createElement('nav', {className: 'nav'}, [page1, page2, page3]);
 
