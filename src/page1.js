@@ -13,7 +13,7 @@ function Page1() {
     searchInput.addEventListener('mouseover', function () {
         this.style.width = '200px';
         this.style.height = '40px';
-        this.style.backgroundColor = 'lightblue';
+        this.style.backgroundColor = '#f15bb5';
     });
     // Add a mouseout event to reset the search bar size when the mouse leaves
     searchInput.addEventListener('mouseout', function () {
@@ -25,7 +25,7 @@ function Page1() {
     searchBtn.addEventListener('mouseover', function () {
         this.style.width = '150px';
         this.style.height = '40px';
-        this.style.backgroundColor = 'lightblue';
+        this.style.backgroundColor = '#9b5de5';
     });
     searchBtn.addEventListener('mouseout', function () {
         this.style.width = '70px';

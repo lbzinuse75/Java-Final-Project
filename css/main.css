@@ -1,5 +1,24 @@
+/* color scheme https://coolors.co/palette/9b5de5-f15bb5-fee440-00bbf9-00f5d4 
+    purple-9b5de5, pink-f15bb5, yellow-fee440, blue-00bbf9, green-00f5d4 */
+
+@font-face {
+    font-family: 'Copse';
+    src: url('./Copse-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url('./Kalam-Regular.ttf') format('truetype');
+}
+
 body {
-    background-color: rgb(201, 147, 252);
+    background-color: #00bbf9;
+    font-family: 'Kalam', serif;
+}
+
+.header h1 {
+    font-family: 'Copse', san-serif;
+    font-size: 60px;
 }
 
 .header {
@@ -11,6 +30,8 @@ body {
 .nav {
     display: flex;
     gap : 16px;
+    font-size: 20;
+    color: black;
 }
 
 .footer {

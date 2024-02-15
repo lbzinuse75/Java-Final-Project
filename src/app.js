@@ -8,6 +8,7 @@ export function Header() {
     const appTitle = createElement('h1', { 
         textContent: 'Disney Fun!', 
         className: 'heading',
+        style: 'text-align: center; margin: 0 auto;'
     });
 
     // nav items
