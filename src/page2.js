@@ -7,7 +7,13 @@ function Page2() {
     const form = createElement('form');
     form.id = 'form';
     const nounInput1 = createElement('div', {}, [
-        createElement('input', { type: 'text', name: 'noun1', id: 'noun1', placeholder: 'Enter a noun' })]
+        createElement('input', { 
+            type: 'text', 
+            name: 'noun1', 
+            id: 'noun1', 
+            placeholder: 'Enter a noun',
+            style: 'width 150px; height: 16px; background-color; #fee440'
+        })]
     );
     const nounInput2 = createElement('div', {}, [
         createElement('input', { type: 'text', name: 'noun2', id: 'noun2', placeholder: 'Enter a noun' })]
@@ -16,7 +22,7 @@ function Page2() {
         createElement('input', { type: 'text', name: 'person', id: 'person', placeholder: 'Enter a person' })]
     );
 
-    const submitButton = createElement('button', { type: 'submit', name: 'submitButton', id: 'submitButton', textContent: 'Generate Story' });
+    const submitButton = createElement('button', { type: 'button', name: 'submitButton', id: 'submitButton', textContent: 'Generate Story' });
 
     // Append form elements to form
     form.append(nounInput1, nounInput2, personInput, submitButton);

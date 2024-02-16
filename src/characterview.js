@@ -12,7 +12,7 @@ function createCharacterElement(character) {
     const films = createElement('p', { id: 'films', textContent: character.films });
 
     const tvShowsLabel = createElement('label', { for: 'tvShows', textContent: 'TV Shows:' });
-    const tvShows = createElement('p', { id: 'tvShows', textContent: character.tvShows }); // .join(', ')
+    const tvShows = createElement('p', { id: 'tvShows', textContent: character.tvShows }); 
 
     const parkAttractionsLabel = createElement('label', { for: 'parkAttractions', textContent: 'Park Attractions:' });
     const parkAttractions = createElement('p', { id: 'parkAttractions', textContent: character.parkAttractions });
@@ -40,16 +40,19 @@ function createCharacterElement(character) {
 
 function displayCharacterInfo(character) {
     const main = document.getElementById('main');
-    main.innerHTML = ''; // Clear previous content
+    // main.innerHTML = ''; // Clear previous content
 
     // Create and append the character element to the main
     if(Array.isArray(character)){
-        character.forEach(item=>{
+        character.forEach((item, index) => {
             const characterElement = createCharacterElement(item);
-            main.appendChild(characterElement);    
+            main.appendChild(characterElement);
+            
+            if (index < character.length - 1) {
+                main.appendChild(document.createElement('hr'));
+            }
         })
-    }
-    else{
+    } else{
         const characterElement = createCharacterElement(character);
         main.appendChild(characterElement);
     } 

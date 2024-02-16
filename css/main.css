@@ -23,8 +23,9 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .nav {
@@ -40,7 +41,13 @@ body {
     margin: 0 auto;
 }
 
-.counter-footer {
+main {
+    display: block;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+/* .counter-footer {
     display: flex;
     gap: 8px;
-}
+} */

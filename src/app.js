@@ -27,7 +27,7 @@ export function Header() {
 
     const nav = createElement('nav', {className: 'nav'}, [page1, page2, page3]);
 
-    return createElement('header', {className: 'header'}, [appTitle, nav]);
+    return createElement('header', {className: 'header', style: 'text-align: center;'}, [appTitle, nav]);
 }
 
 function Footer() {

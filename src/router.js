@@ -26,17 +26,38 @@ export function initRouter(mainView) {
                 break;
 
             case '#/page3':
-                updateView(Page3());
+                await updateView(Page3());
                 break;
 
+            // case '#/page
+                // await updateView(createElement('h3', { textContent: '404 Page Not Found' }));
+                // break;
+
             default:
-                updateView(createElement('h3', { textContent: '404 Page Not Found' }));
+                if (!hash || hash === '#') {
+                    await updateView(createElement('div', {
+                        style: 'text-align: center;'
+                    }, [
+                        createElement('img', {
+                        src: '/images/disney-castle2.jpg',
+                        alt: 'Disney Castle',
+                        className: 'disney-castle-image',
+                        style: 'display; inline-block; margin: auto;'
+                        })
+                    ]));
+                } else {
+                    await updateView(createElement('h3', { textContent: '404 Page Not Found' }));
+                }
                 break;
         }
     }
     async function initializeRouter() {
-        const defaultHash = window.location.hash;
-        await hashToRoute(defaultHash);
+        try {
+            const defaultHash = window.location.hash;
+            await hashToRoute(defaultHash);
+        } catch (error) {
+            console.error('Error initializing router:', error);
+        }
     }
     
     initializeRouter();
