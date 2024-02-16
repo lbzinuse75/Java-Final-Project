@@ -40,25 +40,40 @@ function createCharacterElement(character) {
 
 function displayCharacterInfo(character) {
     const main = document.getElementById('main');
+    let container = document.querySelector('.container');
+    
+    if(!container){
+        // console.log('if');
+        container = createElement('div', {className: 'container'});
+        main.appendChild(container);
+    }
+    else{
+        // console.log('else')
+        container.innerHTML = '';
+    }
+    
+    // container.innerHTML = '';
+    
+    
     // main.innerHTML = ''; // Clear previous content
 
     // Create and append the character element to the main
     if(Array.isArray(character)){
         character.forEach((item, index) => {
             const characterElement = createCharacterElement(item);
-            main.appendChild(characterElement);
+            container.appendChild(characterElement);
             
             if (index < character.length - 1) {
-                main.appendChild(document.createElement('hr'));
+                container.appendChild(document.createElement('hr'));
             }
         })
     } else{
         const characterElement = createCharacterElement(character);
-        main.appendChild(characterElement);
+        container.appendChild(characterElement);
     } 
 }
 
-function fetchCharacterData(characterName) {
+export function fetchCharacterData(characterName) {
     const apiUrl = `https://api.disneyapi.dev/character?name=${characterName}`;
 
     fetch(apiUrl)

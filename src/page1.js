@@ -1,4 +1,5 @@
 import { createElement } from './utils';
+import { fetchCharacterData } from './characterview';
 
 function Page1() {
     const title = createElement('h2', { textContent: 'Welcome to Disney Characters', className: 'Page1Title' });
@@ -33,6 +34,21 @@ function Page1() {
         this.style.height = '22px';
         this.style.backgroundColor = '';
     });
+
+    // Enter key event for the input
+    searchInput.addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    });
+
+    function handleSearch() {
+        const input = searchInput.value.trim();
+        if (input.length > 0) {
+            // Call your search function or perform the desired action
+            fetchCharacterData(input);
+        }
+    }
     
     return createElement('div', {}, [title, instruction, searchLabel, searchInput, searchBtn, characterTitle]);
 }
