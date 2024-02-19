@@ -37,10 +37,11 @@ export function initRouter(mainView, appendSwirlAnimation) {
             default:
                 if (!hash || hash === '#') {
                     await updateView(createElement('div', {
+                        id: 'image',
                         style: 'text-align: center;'
                     }, []));
                     
-                    addSwirlAnimation(mainView);
+                    addSwirlAnimation(image);
 
                     // old stationary picture
                     //     createElement('img', {

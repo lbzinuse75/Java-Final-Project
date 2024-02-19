@@ -3,6 +3,7 @@ export function addSwirlAnimation(mainView) {
     swirlAnimation.classList.add('swirl-animation');
     swirlAnimation.style.backgroundColor = 'transparent';
     swirlAnimation.style.border = 'none';
+    swirlAnimation.style.zIndex = '0';
 
     mainView.appendChild(swirlAnimation);
 
@@ -31,7 +32,7 @@ export function addSwirlAnimation(mainView) {
         swirlAnimation.style.height = finalContainerSize + 'px';
         imageElement.style.position = 'fixed';
         imageElement.style.top = '45%';
-        imageElement.style.left = '88%';
+        imageElement.style.left = '50%';
         imageElement.style.transform = 'translate(-50%, -50%)'; // Center the image
     };
 }
