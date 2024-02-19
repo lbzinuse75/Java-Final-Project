@@ -1,8 +1,6 @@
 export function addSwirlAnimation(mainView) {
     const swirlAnimation = document.createElement('div');
     swirlAnimation.classList.add('swirl-animation');
-    swirlAnimation.style.backgroundColor = 'transparent';
-    swirlAnimation.style.border = 'none';
     swirlAnimation.style.zIndex = '0';
 
     mainView.appendChild(swirlAnimation);
@@ -11,7 +9,7 @@ export function addSwirlAnimation(mainView) {
     imageElement.src = require('/images/disney-castle2.jpg');
     swirlAnimation.appendChild(imageElement);
 
-    const finalContainerSize = 500;
+    const finalContainerSize = 300;
 
     // Start the animation when the page loads
     swirlAnimation.animate(
@@ -28,11 +26,14 @@ export function addSwirlAnimation(mainView) {
         }
     ).onfinish = function () {
         // Adjust the size of the container after the animation is complete
-        swirlAnimation.style.width = finalContainerSize + 'px';
-        swirlAnimation.style.height = finalContainerSize + 'px';
+        // swirlAnimation.style.width = finalContainerSize + 'px';
+        // swirlAnimation.style.height = finalContainerSize + 'px';
         imageElement.style.position = 'fixed';
-        imageElement.style.top = '45%';
+        imageElement.style.top = '50%';
         imageElement.style.left = '50%';
         imageElement.style.transform = 'translate(-50%, -50%)'; // Center the image
+        console.log('Final Container Size:', finalContainerSize);
+        console.log('swirlAnimation Width:', swirlAnimation.style.width);
+        console.log('swirlAnimation Height:', swirlAnimation.style.height);
     };
 }

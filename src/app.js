@@ -17,15 +17,18 @@ export function Header() {
     // nav items
     const page1 = createElement('a', { 
         href: '/#/page1',
-        textContent: 'Characters'
+        textContent: 'Characters',
+        id: 'characters'
     });    
     const page2 = createElement('a', {
          href: '/#/page2', 
-         textContent: 'Story'
+         textContent: 'Story',
+         id: 'story'
     });
     const page3 = createElement('a', {
          href: '/#/page3', 
-         textContent: 'Quiz'
+         textContent: 'Quiz',
+         id: 'quiz'
     });
 
     const nav = createElement('nav', {className: 'nav'}, [page1, page2, page3]);
