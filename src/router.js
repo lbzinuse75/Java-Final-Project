@@ -3,12 +3,17 @@ import Page2 from './page2.js';
 import Page3 from './page3.js';
 import { createElement } from './utils';
 import addEvent from './characterview.js'
+import { addSwirlAnimation } from './home';
 
-export function initRouter(mainView) {
+export function initRouter(mainView, appendSwirlAnimation) {
     async function updateView(newView) {
         try {
+            if (mainView) {
             mainView.innerHTML = '';
             mainView.appendChild(newView);
+            } else {
+                console.error('Main view element not found.');
+            }
         } catch (error) {
             console.error('Error updating view:', error);
         }   
@@ -29,28 +34,30 @@ export function initRouter(mainView) {
                 await updateView(Page3());
                 break;
 
-            // case '#/page
-                // await updateView(createElement('h3', { textContent: '404 Page Not Found' }));
-                // break;
-
             default:
                 if (!hash || hash === '#') {
                     await updateView(createElement('div', {
                         style: 'text-align: center;'
-                    }, [
-                        createElement('img', {
-                        src: '/images/disney-castle2.jpg',
-                        alt: 'Disney Castle',
-                        className: 'disney-castle-image',
-                        style: 'display; inline-block; margin: auto;'
-                        })
-                    ]));
+                    }, []));
+                    
+                    addSwirlAnimation(mainView);
+
+                    // old stationary picture
+                    //     createElement('img', {
+                    //     src: '/images/disney-castle2.jpg',
+                    //     alt: 'Disney Castle',
+                    //     className: 'disney-castle-image',
+                    //     style: 'display; inline-block; margin: auto;'
+                    //     })
+                    // ]));
+
                 } else {
                     await updateView(createElement('h3', { textContent: '404 Page Not Found' }));
                 }
                 break;
         }
     }
+
     async function initializeRouter() {
         try {
             const defaultHash = window.location.hash;
@@ -68,5 +75,10 @@ export function initRouter(mainView) {
 
         hashToRoute(hash);
     });
-
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainView = document.getElementById('main');  
+
+    initRouter(mainView);
+});
