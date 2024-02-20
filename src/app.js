@@ -38,7 +38,7 @@ export function Header() {
 
 function Footer() {
     const copyright = createElement('span', {
-        textContent: `Copyright ©; ${new Date().getFullYear()}`,
+        textContent: `Copyright © | Becky Lutz | 2024`,
     });
 
     return createElement('footer', {className: 'footer'}, [copyright]);

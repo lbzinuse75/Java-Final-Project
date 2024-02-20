@@ -2,7 +2,7 @@ import { createElement } from './utils';
 import importedQuizData from './quizData.js';
 
 function Page3() {
-    const title = createElement('h2', {textContent: 'Disney Character Quiz'});
+    const title = createElement('h2', { textContent: 'Disney Character Quiz' });
 
     // Create a container for the quiz
     const quizContainer = createElement('div', { id: 'quiz-container' });
