@@ -49,8 +49,9 @@ main {
 
 main #page3 {
     display: block;
-    margin: 0 auto;
+    margin: 0px auto;
     text-align: left;
+    padding-left: 1in;
 }
 
 .swirl-animation {
@@ -64,4 +65,30 @@ main #page3 {
 /* Increase the size to 150% on hover */
 input[type="radio"]:hover {
     transform: scale(1.5); 
+}
+
+/* move the user score to bring attention */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(10%);
+        opacity: 0.8;
+    }
+    100% {
+        transfrom: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply the sliding animation to an element with the 'slide' class */
+.slide {
+    animation: slide 1s infinite; /* Adjust the duration and iteration as needed */
+}
+
+/* Add red text color for incorrect answers */
+.incorrect-option {
+    color: red;
 }

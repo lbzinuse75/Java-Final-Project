@@ -69,44 +69,58 @@ function Page3() {
         quizContainer.appendChild(submitButton);
     }
 
-    function checkAnswers() {
+    function checkAnswers(event) {
         event.preventDefault();
+    
         const userAnswers = [];
-
+    
         // Collect user-selected answers
         importedQuizData.forEach((quizItem, index) => {
             const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
             userAnswers.push(selectedOption ? selectedOption.value : null);
         });
-
-        //Save user answers to local storage
+    
+        // Save user answers to local storage
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
-
+    
         // Check user answers against correct answers
         const score = userAnswers.reduce((acc, userAnswer, index) => {
             return userAnswer === importedQuizData[index].correctAnswer ? acc + 1 : acc;
         }, 0);
-
+    
         // Display the score
         const resultMessage = createElement('p', {
-        textContent: `You scored ${score} out of ${importedQuizData.length}!`
+            textContent: `You scored ${score} out of ${importedQuizData.length}!`,
+            className: 'slide'
         });
-
+    
+        quizContainer.appendChild(resultMessage);
+    
+        setTimeout(() => {
+            resultMessage.classList.remove('slide');
+        }, 3000);
+    
         // Retrieve user answers from local storage
         const savedUserAnswers = JSON.parse(localStorage.getItem('userAnswers'));
-
+    
         // Display user and correct answers
-        const answersText = savedUserAnswers.map((userAnswer, index) => {
-            return `Q${index + 1}: Your Answer - ${userAnswer}, Correct Answer - ${importedQuizData[index].correctAnswer}`;
+        const answersDisplay = savedUserAnswers.map((userAnswer, index) => {
+            const isCorrect = userAnswer === importedQuizData[index].correctAnswer;
+            const answerColor = isCorrect ? 'black' : 'red'; // Set text color based on correctness
+    
+            return `Q${index + 1}: Your Answer - <span style="color: ${answerColor};">${userAnswer}</span>, Correct Answer - ${importedQuizData[index].correctAnswer}`;
         }).join('<br>');
-
-        const answersDisplay = createElement('div', { id: 'answers-display', innerHTML: answersText });
-
+    
+        const answersDisplayContainer = createElement('div', {
+            id: 'answers-display',
+            innerHTML: answersDisplay
+        });
+    
         // Replace the quiz container with the result message
         quizContainer.replaceWith(resultMessage);
-
+    
         // Append user and correct answers display to the answers container
-        answersContainer.appendChild(answersDisplay);
+        answersContainer.appendChild(answersDisplayContainer);
     }
 
     return createElement('div', { id: 'page3' }, [title, quizContainer, answersContainer]);
