@@ -34,24 +34,24 @@ export function initRouter(mainView) {
                 await addEvent();
                 // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
                 // document.getElementById('characters').addEventListener('click', () => location.reload());
-                document.getElementById('characters').removeEventListener('click', reload);
                 document.getElementById('story').removeEventListener('click', reload);
-                document.getElementById('quiz').addEventListener('click', reload);
+                document.getElementById('quiz').removeEventListener('click', reload);
+                document.getElementById('characters').addEventListener('click', reload);
                 break;
 
             case '#/page2':
                 await updateView(Page2());
                 // add event listener to reload the page, give a refreshed view, when the 'Story' link is clicked
                 document.getElementById('characters').removeEventListener('click', reload);
-                document.getElementById('story').removeEventListener('click', reload);
-                document.getElementById('quiz').addEventListener('click', reload);
+                document.getElementById('quiz').removeEventListener('click', reload);
+                document.getElementById('story').addEventListener('click', reload);
                 break;
 
             case '#/page3':
                 await updateView(Page3());
                 // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
-                document.getElementById('characters').removeEventListener('click', reload);
                 document.getElementById('story').removeEventListener('click', reload);
+                document.getElementById('characters').removeEventListener('click', reload);
                 document.getElementById('quiz').addEventListener('click', reload);
                 break;
 
@@ -62,7 +62,7 @@ export function initRouter(mainView) {
                         id: 'image',
                         style: 'text-align: center;'
                     }, []));
-                    //call animation for default page
+                    //call animation to image for default page
                     addSwirlAnimation(image);
 
                 } else {
