@@ -1,3 +1,4 @@
+// adding an animation to the default page for effect
 export function addSwirlAnimation(mainView) {
     const swirlAnimation = document.createElement('div');
     swirlAnimation.classList.add('swirl-animation');
@@ -5,13 +6,12 @@ export function addSwirlAnimation(mainView) {
 
     mainView.appendChild(swirlAnimation);
 
+    // add image
     const imageElement = document.createElement('img');
     imageElement.src = require('/images/disney-castle2.jpg');
     swirlAnimation.appendChild(imageElement);
 
-    const finalContainerSize = 300;
-
-    // Start the animation when the page loads
+    // start the animation when the page loads
     swirlAnimation.animate(
         [
             { transform: 'scale(0) rotate(0deg) translateX(0)' },
@@ -25,15 +25,10 @@ export function addSwirlAnimation(mainView) {
             fill: 'forwards',
         }
     ).onfinish = function () {
-        // Adjust the size of the container after the animation is complete
-        // swirlAnimation.style.width = finalContainerSize + 'px';
-        // swirlAnimation.style.height = finalContainerSize + 'px';
+        // adjust the size of the container after the animation is complete
         imageElement.style.position = 'fixed';
         imageElement.style.top = '50%';
         imageElement.style.left = '50%';
         imageElement.style.transform = 'translate(-50%, -50%)'; // Center the image
-        console.log('Final Container Size:', finalContainerSize);
-        console.log('swirlAnimation Width:', swirlAnimation.style.width);
-        console.log('swirlAnimation Height:', swirlAnimation.style.height);
     };
 }

@@ -8,7 +8,7 @@ function Page1() {
         className: 'Page1Title', 
     });
     const instruction = createElement('p', {
-        // double quotes because of the apostrophe
+        // quotes because of the apostrophe
         textContent: "Type in any Disney Character's name and click Search",
     });
 

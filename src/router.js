@@ -5,6 +5,10 @@ import { createElement } from './utils';
 import addEvent from './characterview.js'
 import { addSwirlAnimation } from './home';
 
+function reload(){
+    location.reload()
+}
+
 // router initialization function, handles navigation and updates the main view based on the URL hash
 export function initRouter(mainView) {
     // update the mainView element to display a new view for each page
@@ -29,28 +33,36 @@ export function initRouter(mainView) {
                 await updateView(Page1());
                 await addEvent();
                 // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
-                document.getElementById('characters').addEventListener('click', () => location.reload());
+                // document.getElementById('characters').addEventListener('click', () => location.reload());
+                document.getElementById('story').removeEventListener('click', reload);
+                document.getElementById('quiz').removeEventListener('click', reload);
+                document.getElementById('characters').addEventListener('click', reload);
                 break;
 
             case '#/page2':
                 await updateView(Page2());
                 // add event listener to reload the page, give a refreshed view, when the 'Story' link is clicked
-                document.getElementById('story').addEventListener('click', () => location.reload());
+                document.getElementById('characters').removeEventListener('click', reload);
+                document.getElementById('quiz').removeEventListener('click', reload);
+                document.getElementById('story').addEventListener('click', reload);
                 break;
 
             case '#/page3':
                 await updateView(Page3());
                 // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
-                document.getElementById('quiz').addEventListener('click', () => location.reload());
+                document.getElementById('story').removeEventListener('click', reload);
+                document.getElementById('characters').removeEventListener('click', reload);
+                document.getElementById('quiz').addEventListener('click', reload);
                 break;
 
             default:
+                // send error message if hash not found
                 if (!hash || hash === '#') {
                     await updateView(createElement('div', {
                         id: 'image',
                         style: 'text-align: center;'
                     }, []));
-                    
+                    //call animation for default page
                     addSwirlAnimation(image);
 
                 } else {
