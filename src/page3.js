@@ -2,26 +2,41 @@ import { createElement } from './utils';
 import importedQuizData from './quizData.js';
 
 function Page3() {
-    const title = createElement('h2', { textContent: 'Disney Character Quiz' });
+    // create title
+    const title = createElement('h2', { 
+        textContent: 'Disney Character Quiz', 
+    });
 
-    // Create a container for the quiz
-    const quizContainer = createElement('div', { id: 'quiz-container' });
+    // create a container for the quiz
+    const quizContainer = createElement('div', { 
+        id: 'quiz-container', 
+    });
 
-    const answersContainer = createElement('div', { id: 'answers-container' });
+    // create a container for the answers
+    const answersContainer = createElement('div', { 
+        id: 'answers-container',
+    });
 
-    // Render the quiz questions
+    // render the quiz questions
     renderQuizQuestions();
 
     function renderQuizQuestions() {
         importedQuizData.forEach((quizItem, index) => {
-            const questionElement = createElement('div', { className: 'question' });
-            const questionText = createElement('p', { textContent: `${index + 1}. ${quizItem.question}` });
+            const questionElement = createElement('div', { 
+                className: 'question', 
+            });
+            const questionText = createElement('p', { 
+                textContent: `${index + 1}. ${quizItem.question}`, 
+            });
 
-            // Render answer options
-            const optionsContainer = createElement('div', { className: 'options' });
+            // render answer options
+            const optionsContainer = createElement('div', { 
+                className: 'options', 
+            });
             optionsContainer.style.display = 'flex';
             optionsContainer.style.flexDirection = 'column';
 
+            // set up the radio button choices
             quizItem.options.forEach((option, optionIndex) => {
                 const optionInput = createElement('input', {
                     type: 'radio',
@@ -35,31 +50,36 @@ function Page3() {
                     style: { marginLeft: '8px' }
                 });
 
-                const optionWrapper = createElement('div', { style: { display: 'flex', alignItems: 'center' } });
+                // create a container for the questions
+                const optionWrapper = createElement('div', { style: { 
+                    display: 'flex', 
+                    alignItems: 'center' }, 
+                });
                 optionWrapper.appendChild(optionInput);
                 optionWrapper.appendChild(optionLabel);
 
                 optionsContainer.appendChild(optionWrapper);
             });
 
-            // Append question text and options to question element
+            // append question text and options to question element
             questionElement.appendChild(questionText);
             questionElement.appendChild(optionsContainer);
 
-            // Append question element to the quiz container
+            // append question element to the quiz container
             quizContainer.appendChild(questionElement);
         });
 
-        // Add a submit button
+        // add a submit button
         const submitButton = createElement('button', { id: 'submit-button', textContent: 'Submit Answers' });
         submitButton.addEventListener('click', checkAnswers);
 
+        // add a mouseover effect when mouse hovers over
         submitButton.addEventListener('mouseover', function () {
             this.style.width = '150px';
             this.style.height = '20px';
             this.style.backgroundColor = '#00f5d4';
         });
-        // Add a mouseout event to reset the search bar size when the mouse leaves
+        // add a mouseout event to reset the search bar size when the mouse leaves
         submitButton.addEventListener('mouseout', function () {
             this.style.width = '120px';
             this.style.height = '20px';
@@ -69,26 +89,27 @@ function Page3() {
         quizContainer.appendChild(submitButton);
     }
 
+    // save the users in answers in localStorage then check and compare answers, then display score
     function checkAnswers(event) {
         event.preventDefault();
     
         const userAnswers = [];
     
-        // Collect user-selected answers
+        // collect user-selected answers
         importedQuizData.forEach((quizItem, index) => {
             const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
             userAnswers.push(selectedOption ? selectedOption.value : null);
         });
     
-        // Save user answers to local storage
+        // save user answers to local storage
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
     
-        // Check user answers against correct answers
+        // check user answers against correct answers
         const score = userAnswers.reduce((acc, userAnswer, index) => {
             return userAnswer === importedQuizData[index].correctAnswer ? acc + 1 : acc;
         }, 0);
     
-        // Display the score
+        // display the score
         const resultMessage = createElement('p', {
             textContent: `You scored ${score} out of ${importedQuizData.length}!`,
             className: 'slide'
@@ -96,14 +117,10 @@ function Page3() {
     
         quizContainer.appendChild(resultMessage);
     
-        setTimeout(() => {
-            resultMessage.classList.remove('slide');
-        }, 3000);
-    
-        // Retrieve user answers from local storage
+        // retrieve user answers from local storage
         const savedUserAnswers = JSON.parse(localStorage.getItem('userAnswers'));
     
-        // Display user and correct answers
+        // display user and correct answers
         const answersDisplay = savedUserAnswers.map((userAnswer, index) => {
             const isCorrect = userAnswer === importedQuizData[index].correctAnswer;
             const answerColor = isCorrect ? 'black' : 'red'; // Set text color based on correctness
@@ -116,10 +133,15 @@ function Page3() {
             innerHTML: answersDisplay
         });
     
-        // Replace the quiz container with the result message
+        // replace the quiz container with the result message
         quizContainer.replaceWith(resultMessage);
+
+        // animate the score
+        setTimeout(() => {
+            resultMessage.classList.remove('slide');
+        }, 3000);
     
-        // Append user and correct answers display to the answers container
+        // append user and correct answers display to the answers container
         answersContainer.appendChild(answersDisplayContainer);
     }
 

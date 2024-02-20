@@ -1,13 +1,16 @@
 import { createElement } from './utils';
 
 function Page2() {
-    const title = createElement('h2', {textContent: 'Disney Mad Lib'});
+    // create a title
+    const title = createElement('h2', {
+        textContent: 'Disney Mad Lib',
+    });
 
-    // Create form elements
+    // create form elements
     const form = createElement('form');
     form.id = 'form';
 
-    // Function to update input styles based on whether they are filled
+    // function to update input styles based on whether they are filled
     function updateInputStyles(input) {
         if (input.value.trim() !== '') {
             input.style.backgroundColor = '#00f5d4'; // Change to a filled color blue/green
@@ -16,6 +19,7 @@ function Page2() {
         }
     }
     
+    // create elements
     const nounInput1 = createElement('div', {}, [
         createElement('input', { 
             type: 'text', 
@@ -25,7 +29,6 @@ function Page2() {
             oninput: (event) => updateInputStyles(event.target),
         }),
     ]);
-
     const nounInput2 = createElement('div', {}, [
         createElement('input', { 
             type: 'text', 
@@ -35,7 +38,6 @@ function Page2() {
             oninput: (event) => updateInputStyles(event.target),
         }),
     ]);
-
     const personInput = createElement('div', {}, [
         createElement('input', { 
             type: 'text', 
@@ -45,35 +47,35 @@ function Page2() {
             oninput: (event) => updateInputStyles(event.target),
             })
         ]);
-
     const submitButton = createElement('button', { 
         type: 'button', 
         name: 'submitButton', 
         id: 'submitButton', 
         textContent: 'Generate Story' });
 
-    // Append form elements to form
+    // append form elements to form
     form.append(nounInput1, nounInput2, personInput, submitButton);
 
-    // Initialize formData outside of the gerateSotry function
+    // initialize formData outside of the generateStory function
     let formData;
 
-    // Handle form submission
+    // handle form submission
     submitButton.addEventListener('click', generateStory);
 
-       // Add a mouseover event to enlarge the search bar on hover
+    // add a mouseover event to enlarge the search bar on hover
     submitButton.addEventListener('mouseover', function () {
         this.style.width = '150px';
         this.style.height = '20px';
         this.style.backgroundColor = '#f15bb5';
     });
-    // Add a mouseout event to reset the search bar size when the mouse leaves
+    // add a mouseout event to reset the search bar size when the mouse leaves
     submitButton.addEventListener('mouseout', function () {
         this.style.width = '110px';
         this.style.height = '20px';
         this.style.backgroundColor = '';
     });
 
+    // function to generate the story
     function generateStory() {
         const form = document.getElementById('form');
         formData = new FormData(form);
@@ -84,7 +86,7 @@ function Page2() {
 
         const storyTitleAriel = createElement('h3', {textContent: 'Ariels New Song'}, [])
 
-        // Create the story using the collected input
+        // create the story using the collected input
         const story = `
             Look at this ${noun1}, isn't it neat?<br>
             Wouldn't you think my ${noun2}'s complete?<br>
@@ -92,7 +94,7 @@ function Page2() {
             The ${person} who has everything?<br>
         `;
         
-        // Display the generated story
+        // display the generated story
         const result = document.getElementById('result');
         result.appendChild(storyTitleAriel);
         result.innerHTML += `<div>${story}</div>`;

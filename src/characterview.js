@@ -62,7 +62,7 @@ function createCharacterElement(character) {
         textContent: character.allies, 
     });
 
-    // Append information elements to character info div
+    // append information elements to character info div
     characterInfo.append(characterNameLabel,
         characterName,
         filmsLabel,
@@ -74,7 +74,7 @@ function createCharacterElement(character) {
         alliesLabel,
         allies);
 
-    // Create a container div to hold the character image and information
+    // create a container div to hold the character image and information
     const characterContainer = createElement('div', { className: 'character-container' }, [characterImage, characterInfo]);
 
     return characterContainer;
@@ -93,7 +93,7 @@ function displayCharacterInfo(character) {
         container.innerHTML = '';
     }
 
-    // Create and append the character element to the main
+    // create and append the character element to the main
     if(Array.isArray(character)){
         character.forEach((item, index) => {
             const characterElement = createCharacterElement(item);

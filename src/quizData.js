@@ -1,3 +1,4 @@
+// data used for the quiz
 const importedQuizData = [
     {
       question: "What is the name of Mickey Mouse's dog?",
