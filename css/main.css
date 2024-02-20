@@ -26,6 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1;
 }
 
 .nav {
@@ -42,6 +43,7 @@ body {
 }
 
 main {
+    /* position:relative; */
     display: block;
     margin: 0 auto; 
     text-align: center;
@@ -55,10 +57,14 @@ main #page3 {
 }
 
 .swirl-animation {
+    /* position:absolute; */
+    
     display: block;
     margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 100px;
     width: 300px;
-    height: 300px;
+    height: 150px;
     align-items: center;
 }
 
