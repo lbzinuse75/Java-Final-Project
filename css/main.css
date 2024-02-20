@@ -62,7 +62,7 @@ main #page3 {
     align-items: center;
 }
 
-/* Increase the size to 150% on hover */
+/* Increase radio button size to 150% on hover */
 input[type="radio"]:hover {
     transform: scale(1.5); 
 }

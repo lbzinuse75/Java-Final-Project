@@ -28,19 +28,19 @@ export function initRouter(mainView) {
             case '#/page1':
                 await updateView(Page1());
                 await addEvent();
-                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Characters' link is clicked
+                // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
                 document.getElementById('characters').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page2':
                 await updateView(Page2());
-                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Story' link is clicked
+                // add event listener to reload the page, give a refreshed view, when the 'Story' link is clicked
                 document.getElementById('story').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page3':
                 await updateView(Page3());
-                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Characters' link is clicked
+                // add event listener to reload the page, give a refreshed view, when the 'Characters' link is clicked
                 document.getElementById('quiz').addEventListener('click', () => location.reload());
                 break;
 
