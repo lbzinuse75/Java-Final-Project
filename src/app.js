@@ -1,14 +1,17 @@
 import {createElement} from './utils';
 import { initRouter } from './router';
-import addEvent from './characterview.js'
 
-// import Counter from './counter';
-
+// create header to appear on all pages
 export function Header() {
     const appTitle = createElement('h1', { 
         textContent: 'Disney Fun!', 
         className: 'heading',
-        style: 'text-align: center; margin: 0 auto; cursor: pointer;',
+        style: {
+            textAlign: 'center', 
+            margin: '0 auto',
+            cursor: 'pointer',
+        },
+        // 'Disney Fun!' to act like a home button
         onclick: () => {
             window.location.href = '';
         }
@@ -31,25 +34,31 @@ export function Header() {
          id: 'quiz'
     });
 
-    const nav = createElement('nav', {className: 'nav'}, [page1, page2, page3]);
+    // create nav element
+    const nav = createElement('nav', { className: 'nav' }, [page1, page2, page3]);
 
-    return createElement('header', {className: 'header', style: 'text-align: center;'}, [appTitle, nav]);
+    // create header element
+    return createElement('header', { className: 'header', style: 'text-align: center;' }, [appTitle, nav]);
 }
 
+// create footer to appear on all pages
 function Footer() {
     const copyright = createElement('span', {
         textContent: `Copyright © | Becky Lutz | 2024`,
     });
 
-    return createElement('footer', {className: 'footer'}, [copyright]);
+    // create footer element
+    return createElement('footer', { className: 'footer' }, [copyright]);
 }
 
+// create main container for pages
 function App() {
-    const main = createElement('main', {id: 'main'}, []);
+    const main = createElement('main', { id: 'main' }, []);
 
     initRouter(main);
 
-    return createElement('div', {className: 'app'}, [Header(), main, Footer()]);
+    // create the page structure
+    return createElement('div', { className: 'app' }, [Header(), main, Footer()]);
 }
 
 export default App;

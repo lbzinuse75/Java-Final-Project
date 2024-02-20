@@ -5,7 +5,10 @@ import { createElement } from './utils';
 import addEvent from './characterview.js'
 import { addSwirlAnimation } from './home';
 
-export function initRouter(mainView, appendSwirlAnimation) {
+// router initialization function, handles navigation and updates the main view based on the URL hash
+export function initRouter(mainView) {
+    // update the mainView element to display a new view for each page
+    // clears the existing content and appends the provided 'newView'
     async function updateView(newView) {
         try {
             if (mainView) {
@@ -19,23 +22,26 @@ export function initRouter(mainView, appendSwirlAnimation) {
         }   
     }
 
+    // handle navigation by interpreting the hash and displaying the corresponding page
     async function hashToRoute(hash) {
         switch (hash) {
             case '#/page1':
                 await updateView(Page1());
                 await addEvent();
-                // document.getElementById('characters').addEventListener('click', () => location.reload());
+                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Characters' link is clicked
+                document.getElementById('characters').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page2':
                 await updateView(Page2());
-                // Reload the page when clicking the link again
-                // document.getElementById('story').addEventListener('click', () => location.reload());
+                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Story' link is clicked
+                document.getElementById('story').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page3':
                 await updateView(Page3());
-                // document.getElementById('quiz').addEventListener('click', () => location.reload());
+                // add event listener to reload the page, ensuring a consistent and refreshed view, when the 'Characters' link is clicked
+                document.getElementById('quiz').addEventListener('click', () => location.reload());
                 break;
 
             default:
@@ -47,15 +53,6 @@ export function initRouter(mainView, appendSwirlAnimation) {
                     
                     addSwirlAnimation(image);
 
-                    // old stationary picture
-                    //     createElement('img', {
-                    //     src: '/images/disney-castle2.jpg',
-                    //     alt: 'Disney Castle',
-                    //     className: 'disney-castle-image',
-                    //     style: 'display; inline-block; margin: auto;'
-                    //     })
-                    // ]));
-
                 } else {
                     await updateView(createElement('h3', { textContent: '404 Page Not Found' }));
                 }
@@ -63,6 +60,7 @@ export function initRouter(mainView, appendSwirlAnimation) {
         }
     }
 
+    // initialize the router by handling the default has on page load
     async function initializeRouter() {
         try {
             const defaultHash = window.location.hash;
@@ -82,6 +80,7 @@ export function initRouter(mainView, appendSwirlAnimation) {
     });
 }
 
+// set up event listeners and initialize the router when the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     const mainView = document.getElementById('main');  
 

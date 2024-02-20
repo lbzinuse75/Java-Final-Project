@@ -1,16 +1,16 @@
 export function createElement(type, props = {}, children = []) {
     const element = document.createElement(type);
 
-    // props: {textContent: 'Hello World!', id: 'header1', 'data-productId': 123, ...}
-    Object.entries(props).forEach(([key, value]) => {
-        if(~key.indexOf('-')) {
+    // props: 'textContent: 'Hello World!', 'id': 'header1', 'data-productId': 123, ...}
+    for (const [key, value] of Object.entries(props)) {    
+        if(key.startsWith('data-')) {
             element.setAttribute(key, value); // data attributes
         }   else {
             element[key] = value;
         }
-    });
+    }
 
-    children.forEach((child) => {
+    children.flat().forEach((child) => {
         element.appendChild(child);
     });
 
