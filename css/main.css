@@ -47,10 +47,21 @@ main {
     text-align: center;
 }
 
+main #page3 {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+}
+
 .swirl-animation {
     display: block;
     margin: 0 auto;
     width: 300px;
     height: 300px;
     align-items: center;
+}
+
+/* Increase the size to 150% on hover */
+input[type="radio"]:hover {
+    transform: scale(1.5); 
 }

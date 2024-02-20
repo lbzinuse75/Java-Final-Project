@@ -50,7 +50,7 @@ function Page1() {
         }
     }
     
-    return createElement('div', {}, [title, instruction, searchLabel, searchInput, searchBtn, characterTitle]);
+    return createElement('div', { id: 'page1' }, [title, instruction, searchLabel, searchInput, searchBtn, characterTitle]);
 }
 
 export default Page1 

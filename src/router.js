@@ -24,18 +24,18 @@ export function initRouter(mainView, appendSwirlAnimation) {
             case '#/page1':
                 await updateView(Page1());
                 await addEvent();
-                document.getElementById('characters').addEventListener('click', () => location.reload());
+                // document.getElementById('characters').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page2':
                 await updateView(Page2());
                 // Reload the page when clicking the link again
-                document.getElementById('story').addEventListener('click', () => location.reload());
+                // document.getElementById('story').addEventListener('click', () => location.reload());
                 break;
 
             case '#/page3':
                 await updateView(Page3());
-                document.getElementById('quiz').addEventListener('click', () => location.reload());
+                // document.getElementById('quiz').addEventListener('click', () => location.reload());
                 break;
 
             default:

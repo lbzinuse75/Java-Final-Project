@@ -6,23 +6,51 @@ function Page2() {
     // Create form elements
     const form = createElement('form');
     form.id = 'form';
+
+    // Function to update input styles based on whether they are filled
+    function updateInputStyles(input) {
+        if (input.value.trim() !== '') {
+            input.style.backgroundColor = '#00f5d4'; // Change to a filled color blue/green
+        } else {
+            input.style.backgroundColor = '#f15bb5'; // Change to the pink color
+        }
+    }
+    
     const nounInput1 = createElement('div', {}, [
         createElement('input', { 
             type: 'text', 
             name: 'noun1', 
             id: 'noun1', 
             placeholder: 'Enter a noun',
-            style: 'width 150px; height: 16px; background-color; #fee440'
-        })]
-    );
-    const nounInput2 = createElement('div', {}, [
-        createElement('input', { type: 'text', name: 'noun2', id: 'noun2', placeholder: 'Enter a noun' })]
-    );
-    const personInput = createElement('div', {}, [
-        createElement('input', { type: 'text', name: 'person', id: 'person', placeholder: 'Enter a person' })]
-    );
+            oninput: (event) => updateInputStyles(event.target),
+        }),
+    ]);
 
-    const submitButton = createElement('button', { type: 'button', name: 'submitButton', id: 'submitButton', textContent: 'Generate Story' });
+    const nounInput2 = createElement('div', {}, [
+        createElement('input', { 
+            type: 'text', 
+            name: 'noun2', 
+            id: 'noun2', 
+            placeholder: 'Enter a noun',         
+            oninput: (event) => updateInputStyles(event.target),
+        }),
+    ]);
+
+    const personInput = createElement('div', {}, [
+        createElement('input', { 
+            type: 'text', 
+            name: 'person', 
+            id: 'person',
+            placeholder: 'Enter a person',
+            oninput: (event) => updateInputStyles(event.target),
+            })
+        ]);
+
+    const submitButton = createElement('button', { 
+        type: 'button', 
+        name: 'submitButton', 
+        id: 'submitButton', 
+        textContent: 'Generate Story' });
 
     // Append form elements to form
     form.append(nounInput1, nounInput2, personInput, submitButton);
@@ -32,6 +60,19 @@ function Page2() {
 
     // Handle form submission
     submitButton.addEventListener('click', generateStory);
+
+       // Add a mouseover event to enlarge the search bar on hover
+    submitButton.addEventListener('mouseover', function () {
+        this.style.width = '150px';
+        this.style.height = '20px';
+        this.style.backgroundColor = '#f15bb5';
+    });
+    // Add a mouseout event to reset the search bar size when the mouse leaves
+    submitButton.addEventListener('mouseout', function () {
+        this.style.width = '110px';
+        this.style.height = '20px';
+        this.style.backgroundColor = '';
+    });
 
     function generateStory() {
         const form = document.getElementById('form');
@@ -55,6 +96,7 @@ function Page2() {
         const result = document.getElementById('result');
         result.appendChild(storyTitleAriel);
         result.innerHTML += `<div>${story}</div>`;
+
     }
         form.addEventListener('submit', (event) => {
             event.preventDefault();

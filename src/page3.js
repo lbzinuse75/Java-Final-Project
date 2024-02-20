@@ -19,6 +19,9 @@ function Page3() {
 
             // Render answer options
             const optionsContainer = createElement('div', { className: 'options' });
+            optionsContainer.style.display = 'flex';
+            optionsContainer.style.flexDirection = 'column';
+
             quizItem.options.forEach((option, optionIndex) => {
                 const optionInput = createElement('input', {
                     type: 'radio',
@@ -28,11 +31,15 @@ function Page3() {
                 });
                 const optionLabel = createElement('label', {
                     htmlFor: `option-${index}-${optionIndex}`,
-                    textContent: option
+                    textContent: option,
+                    style: { marginLeft: '8px' }
                 });
 
-                optionsContainer.appendChild(optionInput);
-                optionsContainer.appendChild(optionLabel);
+                const optionWrapper = createElement('div', { style: { display: 'flex', alignItems: 'center' } });
+                optionWrapper.appendChild(optionInput);
+                optionWrapper.appendChild(optionLabel);
+
+                optionsContainer.appendChild(optionWrapper);
             });
 
             // Append question text and options to question element
@@ -47,9 +54,19 @@ function Page3() {
         const submitButton = createElement('button', { id: 'submit-button', textContent: 'Submit Answers' });
         submitButton.addEventListener('click', checkAnswers);
 
-        quizContainer.appendChild(submitButton);
+        submitButton.addEventListener('mouseover', function () {
+            this.style.width = '150px';
+            this.style.height = '20px';
+            this.style.backgroundColor = '#00f5d4';
+        });
+        // Add a mouseout event to reset the search bar size when the mouse leaves
+        submitButton.addEventListener('mouseout', function () {
+            this.style.width = '120px';
+            this.style.height = '20px';
+            this.style.backgroundColor = '';
+        });
 
-        // main.appendChild(quizContainer);
+        quizContainer.appendChild(submitButton);
     }
 
     function checkAnswers() {
@@ -92,7 +109,7 @@ function Page3() {
         answersContainer.appendChild(answersDisplay);
     }
 
-    return createElement('div', {}, [title, quizContainer, answersContainer]);
+    return createElement('div', { id: 'page3' }, [title, quizContainer, answersContainer]);
 }
 
 export default Page3; 
